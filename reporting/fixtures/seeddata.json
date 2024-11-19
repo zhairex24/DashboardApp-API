@@ -1,0 +1,285 @@
+[
+    {
+      "model": "reporting.Category",
+      "pk": 1,
+      "fields": {
+        "name": "Gear",
+        "description": "Equipment needed for successfull practice"
+      }
+    },
+    {
+      "model": "reporting.Category",
+      "pk": 2,
+      "fields": {
+        "name": "Clothing",
+        "description": "All kind of clothing for all seasons"
+      }
+    },
+    {
+      "model": "reporting.Category",
+      "pk": 3,
+      "fields": {
+        "name": "Spare parts",
+        "description": "Replacable mechanical parts"
+      }
+    },
+    {
+      "model": "reporting.Category",
+      "pk": 4,
+      "fields": {
+        "name": "Manuals",
+        "description": "Descriptive instructional books"
+      }
+    },
+    {
+      "model": "reporting.Supplier",
+      "pk": 1,
+      "fields": {
+        "company_name": "Vandalay Industries",
+        "contact_name": "George Constanza",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "00998877",
+        "email": "george@vandalay.com",
+        "webpage": "www.vandalay.com"
+      }
+    },
+
+    {
+      "model": "reporting.Supplier",
+      "pk": 2,
+      "fields": {
+        "company_name": "Ocean Parfumes",
+        "contact_name": "Cosmo Kramer",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "11223344",
+        "email": "cosmo@parfumes.com",
+        "webpage": "www.parfumes.com"
+      }
+    },
+
+    {
+      "model": "reporting.Supplier",
+      "pk": 3,
+      "fields": {
+        "company_name": "Comedy Central",
+        "contact_name": "Jerry Seinfeld",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "959959959",
+        "email": "jerry@seinfeld.com",
+        "webpage": "www.comedy.com"
+      }
+    },
+    {
+      "model": "reporting.Customer",
+      "pk": 1,
+      "fields": {
+        "first_name": "John",
+        "last_name": "Lennon",
+        "gender": "Male",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "091 901",
+        "email": "johnlennon@testing.com"
+      }
+    },
+    {
+      "model": "reporting.Customer",
+      "pk": 2,
+      "fields": {
+        "first_name": "Paul",
+        "last_name": "McCartney",
+        "gender": "Male",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "091 901",
+        "email": "paulmccartney@testing.com"
+      }
+    },
+    {
+      "model": "reporting.Customer",
+      "pk": 3,
+      "fields": {
+        "first_name": "Ringo",
+        "last_name": "Star",
+        "gender": "Male",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "091 901",
+        "email": "ringostar@testing.com"
+      }
+    },
+    {
+      "model": "reporting.Customer",
+      "pk": 4,
+      "fields": {
+        "first_name": "George",
+        "last_name": "Harrison",
+        "gender": "Male",
+        "barangay":"Bunlo",
+        "city":"Bocaue",
+        "province":"Bulacan",
+        "country":"PH",
+        "postal_code":"23000",
+        "phone": "091 101",
+        "email": "georgeharrison@testing.com"
+      }
+    },
+    
+    
+    {
+      "model": "reporting.Product",
+      "pk": 1,
+      "fields": {
+        "product_name": "Jacket",
+        "supplier_id": 1,
+        "category_id": 2,
+        "unit_price": 120,
+        "units_in_stock": 4,
+        "units_on_order": 2
+      }
+    },
+    
+    {
+      "model": "reporting.Product",
+      "pk": 2,
+      "fields": {
+        "product_name": "Helmet",
+        "supplier_id": 1,
+        "category_id": 2,
+        "unit_price": 220,
+        "units_in_stock": 10,
+        "units_on_order": 0
+      }
+    },
+    
+    {
+      "model": "reporting.Product",
+      "pk": 3,
+      "fields": {
+        "product_name": "Gardening book",
+        "supplier_id": 2,
+        "category_id": 4,
+        "unit_price": 10,
+        "units_in_stock": 100,
+        "units_on_order": 25
+      }
+    },
+
+    {
+      "model": "reporting.Product",
+      "pk": 4,
+      "fields": {
+        "product_name": "Shirt",
+        "supplier_id": 2,
+        "category_id": 2,
+        "unit_price": 40,
+        "units_in_stock": 20,
+        "units_on_order": 10
+      }
+    },
+
+    {
+      "model": "reporting.Product",
+      "pk": 5,
+      "fields": {
+        "product_name": "Computer Book",
+        "supplier_id": 1,
+        "category_id": 4,
+        "unit_price": 15,
+        "units_in_stock": 90,
+        "units_on_order": 15
+      }
+    },
+    
+    {
+      "model": "reporting.Order",
+      "pk": 1,
+      "fields": {
+        "customer_id": 1,
+        "product_id": 1,
+        "order_date": "2023-11-02 17:30:06.189915+00:00",
+        "required_date":"2023-11-02 17:30:06.189915+00:00",
+        "shipped_name":"John Lennon",
+        "shipped_barangay":"Pinagkuartelan",
+        "shipped_city":"Pandi",
+        "shipped_province":"Bulacan",
+        "shipped_country":"PH",
+        "shipped_postal_code":"21000"
+      }
+    },
+    {
+      "model": "reporting.Order",
+      "pk": 2,
+      "fields": {
+        "customer_id": 3,
+        "product_id": 2,
+        "order_date": "2023-11-02 17:30:06.189915+00:00",
+        "required_date":"2023-11-02 17:30:06.189915+00:00",
+        "shipped_name":"Ringo Star",
+        "shipped_barangay":"Poblacion",
+        "shipped_city":"Guiguinto",
+        "shipped_province":"Bulacan",
+        "shipped_country":"PH",
+        "shipped_postal_code":"23000"
+      }
+    },
+
+    {
+      "model": "reporting.Order",
+      "pk": 3,
+      "fields": {
+        "customer_id": 1,
+        "product_id": 2,
+        "order_date": "2023-11-03 17:30:06.189915+00:00",
+        "required_date":"2023-11-04 17:30:06.189915+00:00",
+        "shipped_name":"John Lennon",
+        "shipped_barangay":"Sampaloc",
+        "shipped_city":"Apalit",
+        "shipped_province":"Pampanga",
+        "shipped_country":"PH",
+        "shipped_postal_code":"21000"
+      }
+    },
+
+    {
+      "model": "reporting.Order",
+      "pk": 4,
+      "fields": {
+        "customer_id": 2,
+        "product_id": 3,
+        "order_date": "2023-11-02 17:30:06.189915+00:00",
+        "required_date":"2023-11-02 17:30:06.189915+00:00",
+        "shipped_name":"Paul McCartney",
+        "shipped_barangay":"Bunlo",
+        "shipped_city":"Bocaue",
+        "shipped_province":"Bulacan",
+        "shipped_country":"PH",
+        "shipped_postal_code":"23000"
+      }
+    }
+ 
+  ]
+
+  
+

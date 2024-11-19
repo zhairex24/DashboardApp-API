@@ -1,18 +1,34 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework import viewsets
 
-from reporting.models import Order
-from reporting.serializers import OrderSerializer
-
-class ReportingViewSet(APIView):
-    def get(self, request):
-        answer = {'id': "42", 'name': "questionasdasd"}
-
-        return Response(answer)
-    
+from reporting.models import Order, Category, Customer, Supplier, Product
+from reporting.serializers import OrderSerializer, CategorySerializer, CustomerSerializer, SupplierSerializer, ProductSerializer
 class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
 
     def get_queryset(self):
-        return Order.objects.all().order_by('-created_time')
+        return Order.objects.all().order_by('-order_date')
+    
+class CategoryViewSet(viewsets.ModelViewSet):
+
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CustomerViewSet(viewsets.ModelViewSet):
+
+    serializer_class = CustomerSerializer
+
+    def get_queryset(self):
+        return Customer.objects.all().order_by('province', 'last_name')
+    
+
+class SupplierViewSet(viewsets.ModelViewSet):
+
+    serializer_class = SupplierSerializer
+
+    def get_queryset(self):
+        return Supplier.objects.all().order_by('province', 'company_name')
+
+class ProductViewSet(viewsets.ModelViewSet):
+
+    queryset = Category.objects.all()
+    serializer_class = ProductSerializer
