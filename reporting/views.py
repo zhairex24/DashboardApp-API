@@ -30,5 +30,5 @@ class SupplierViewSet(viewsets.ModelViewSet):
 
 class ProductViewSet(viewsets.ModelViewSet):
 
-    queryset = Category.objects.all()
+    queryset = Product.objects.all()
     serializer_class = ProductSerializer
