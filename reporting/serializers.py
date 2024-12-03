@@ -7,6 +7,7 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ['id',
                   'customer',
+                  'product',
                   'order_date',
                   'required_date',
                   'shipped_name',
@@ -73,6 +74,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ['id',
                   'product_name',
                   'category',
+                  'supplier',
                   'unit_price',
                   'units_in_stock',
                   'units_on_order'

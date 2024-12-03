@@ -24,14 +24,6 @@
       }
     },
     {
-      "model": "reporting.Category",
-      "pk": 4,
-      "fields": {
-        "name": "Manuals",
-        "description": "Descriptive instructional books"
-      }
-    },
-    {
       "model": "reporting.Supplier",
       "pk": 1,
       "fields": {
@@ -179,7 +171,7 @@
       "fields": {
         "product_name": "Gardening book",
         "supplier_id": 2,
-        "category_id": 4,
+        "category_id": 2,
         "unit_price": 10,
         "units_in_stock": 100,
         "units_on_order": 25
@@ -205,7 +197,7 @@
       "fields": {
         "product_name": "Computer Book",
         "supplier_id": 1,
-        "category_id": 4,
+        "category_id": 2,
         "unit_price": 15,
         "units_in_stock": 90,
         "units_on_order": 15

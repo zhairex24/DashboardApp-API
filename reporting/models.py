@@ -40,8 +40,8 @@ class Product(models.Model):
     unit_price = models.IntegerField()
     units_in_stock = models.IntegerField()
     units_on_order = models.IntegerField()
-    supplier = models.ForeignKey(Supplier, on_delete=models.DO_NOTHING, null=True)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['category', 'unit_price']
@@ -55,5 +55,5 @@ class Order(models.Model):
     shipped_province = models.CharField(max_length=50)
     shipped_country = models.CharField(max_length=50)
     shipped_postal_code = models.CharField(max_length=50)
-    customer = models.ForeignKey(Customer, on_delete=models.DO_NOTHING)
-    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
