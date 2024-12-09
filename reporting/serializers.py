@@ -84,3 +84,13 @@ class ProductSerializer(serializers.ModelSerializer):
         self.fields['supplier'] = SupplierSerializer(read_only=True)
         self.fields['category'] = CategorySerializer(read_only=True)
         return super(ProductSerializer, self).to_representation(instance)
+
+class CountryFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['shipped_country'] 
+
+class CityFilterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['shipped_city'] 
