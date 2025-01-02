@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+from datetime import timedelta
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +33,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'axes',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'rest_framework',
-    'reporting'
+    'rest_framework_simplejwt',
+    'reporting',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -52,12 +57,30 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = {
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend' # to control the access
+}
+
 REST_FRAMEWORK = {
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication', 
+    ),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination', # default
     'DEFAULT_PAGINATION_CLASS': 'reporting.pagination.PageNumberSizePagination',
     'PAGE_SIZE': 10
+}
+
+AUTH_USER_MODEL = 'users.user'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),
+    'UPDATE_LAST_LOGIN': True,
+    'SIGNING_KEY': SECRET_KEY
 }
 
 ROOT_URLCONF = 'api.urls'
@@ -91,6 +114,9 @@ DATABASES = {
     }
 }
 
+AXES_FAILURE_LIMIT = 5
+AXES_ONLY_USER_FAILURES = True # it does not lock a user from the same IP address, it is only going to base the lock on user.
+AXES_RESET_ON_SUCESS = True # a successful login will reset the number of failed logins.
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -107,6 +133,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
+        'NAME': 'users.validators.ComplexityValidator',
+    },
+    {
+        'NAME': 'users.validators.CharacterRepeatValidator',
     },
 ]
 
