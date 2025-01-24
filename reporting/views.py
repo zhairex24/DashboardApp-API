@@ -7,6 +7,8 @@ from reporting.serializers import OrderSerializer, CategorySerializer, CustomerS
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
+import time
+
 class OrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
@@ -14,6 +16,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     search_fields = ['product__product_name', 'customer__last_name']
 
     def get_queryset(self):
+        time.sleep(10)
         if(self.request.GET.get('order_by')) == 'order_date':
             return Order.objects.all().order_by('-order_date')
         else:
